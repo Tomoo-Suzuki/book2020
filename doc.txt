@@ -1,16 +1,9 @@
 
 docker-compose up -d
 
-docker network create my_nw
-
 lsof -i:5432 -P
 
-docker network connect my_nw book_sales_dev
-docker network connect my_nw book_upload_dev
-docker network connect my_nw db_book_dev
-
-docker network inspect my_nw
-
+docker network inspect book2020
 
 docker exec -it book_upload_dev sh
 ping -w 3 db_book_dev
@@ -25,3 +18,12 @@ ping -w 3 book_upload_dev
 ping -w 3 db_book_dev
 
 docker-compose down --rmi all --volumes
+
+docker network rm my_nw
+docker network rm db_book_default
+
+
+docker network create book2020
+docker network connect book2020 book_sales_dev
+docker network connect book2020 book_upload_dev
+docker network connect book2020 db_book_dev
