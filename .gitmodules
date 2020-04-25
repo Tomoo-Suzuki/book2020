@@ -7,3 +7,6 @@
 [submodule "db_book"]
 	path = db_book
 	url = https://github.com/Tomoo-Suzuki/db_book.git
+[submodule "graphql_book"]
+	path = graphql_book
+	url = https://github.com/Tomoo-Suzuki/graphql_book.git

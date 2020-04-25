@@ -9,7 +9,6 @@ services:
       - "8888:8888"
     networks:
       - book2020
-    hostname: postgres
     restart: always
     volumes:
       - ./book_sales:/app/book_sales
@@ -22,10 +21,19 @@ services:
       - "8080:8080"
     networks:
       - book2020
-    hostname: postgres
     restart: always
     volumes:
       - ./book_sales:/app/book_upload
+
+  graphql_book:
+    build:
+      context: ./graphql_book
+    container_name: graphql_book_dev
+    ports:
+      - "7777:7777"
+    restart: always
+    volumes:
+      - ./graphql_book:/app/graphql_book
 
   db_book:
     build:
