@@ -1,6 +1,3 @@
-[submodule "book_sales"]
-	path = book_sales
-	url = https://github.com/Tomoo-Suzuki/book_sales.git
 [submodule "book_upload"]
 	path = book_upload
 	url = https://github.com/Tomoo-Suzuki/book_upload.git
