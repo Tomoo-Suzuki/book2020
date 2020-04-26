@@ -11,7 +11,7 @@ services:
       - book2020
     restart: always
     volumes:
-      - ./book_sales:/app/book_sales
+      - ./book_sales/src:/app/src
 
   book_upload:
     build:
@@ -23,7 +23,7 @@ services:
       - book2020
     restart: always
     volumes:
-      - ./book_sales:/app/book_upload
+      - ./book_upload/src:/app/src
 
   graphql_book:
     build:
@@ -31,9 +31,12 @@ services:
     container_name: graphql_book_dev
     ports:
       - "7777:7777"
+    networks:
+      - book2020
     restart: always
     volumes:
-      - ./graphql_book:/app/graphql_book
+      - ./graphql_book/schemas:/app/schemas
+      - ./graphql_book/server.js:/app/server.js
 
   db_book:
     build:
@@ -50,8 +53,6 @@ services:
       - POSTGRES_DB=db_book_dev
       - DATABASE_HOST=localhost
     restart: always
-    volumes:
-      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
 
 volumes:
   db-data:
